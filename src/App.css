@@ -1,4 +1,42 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  text-decoration: none;
+}
 body {
   display: flex;
   flex-direction: column;
+  color: rgb(53, 91, 156);
+  background-color: rgb(239, 248, 255);
+}
+
+.header {
+  background-color: rgb(53, 91, 156);
+  color: rgb(231, 244, 255);
+  padding: 1em;
+}
+
+.main-content {
+  padding: 1em;
+}
+
+.main-content > h1 {
+  margin-bottom: 0.5em;
+}
+ul {
+  list-style: none;
+  margin-bottom: 1em;
+}
+
+button {
+  background-color: rgb(53, 91, 156);
+  color: white;
+  padding: 0.8em;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: rgb(56, 126, 71);
 }
