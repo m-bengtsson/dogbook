@@ -1,47 +1,37 @@
 import './App.css';
+import { Header } from './components/header';
+import { Home } from './pages/home'
+import { Profile } from './pages/profile';
+import { Edit } from './pages/edit'
+import { Create } from './pages/create'
 
-function Header() {
+import { Routes, Route, Link, useParams, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
+
+function Dog() {
    return (
-      <div>
-         <header className='header'>
-            <h2>Dogbook</h2>
-         </header>
-      </div>
+      <h1>Dog</h1>
    )
-}
 
-function Home() {
-   return (
-      <div>
-         <section className='main-content'>
-
-
-            <h1>Users</h1>
-            <ul>
-               <li>
-                  <a href='#'>@ Dog 1</a>
-               </li>
-               <li>
-                  <a href='#'>@ Dog 2</a>
-               </li>
-               <li>
-                  <a href='#'>@ Dog 3</a>
-               </li>
-            </ul>
-
-            <button>Create new dog</button>
-         </section>
-      </div>
-   )
 }
 
 
 
 function App() {
+
+   const doglist = useState
+
    return (
       <div>
          <Header />
-         <Home />
+         <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/create' element={<Create />} />
+            <Route path='/edit' element={<Edit />} />
+            <Route path='/id' element={<Dog />} />
+         </Routes>
 
       </div>
    );
