@@ -1,5 +1,6 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+
 
 export function Profile({dogs}){
    console.log(dogs)
@@ -10,8 +11,8 @@ export function Profile({dogs}){
 
    return (
       <div>
-         <h1>Dog</h1>
-         <p>Name: {name}</p>
+         <p>Name: {name} <button> <Link to={'/edit'}>Edit</Link></button></p>
+         <p>Nickname: {nickname}</p>
          <p>Age: {age}</p>
          <p>Bio: {bio}</p>
       </div>
