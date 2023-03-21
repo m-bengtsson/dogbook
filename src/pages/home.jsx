@@ -2,29 +2,16 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 
-export function Home() {
-   //Todo:
-   // Mappa över lista av hundar
+export function Home({dogs}) {
 
    return (
       <div>
          <section className='main-content'>
-
-
             <h1>Users</h1>
             <ul>
-               <li>
-                  <a href='#'>@ Dog 1</a>
-               </li>
-               <li>
-                  <Link to="/profile">Profile</Link>
+               {dogs.map(dog => <Link to={`/${dog.nickname}`} key={dog.id}><li >{dog.name}</li> </Link>)}
 
-               </li>
-               <li>
-                  <a href='#'>@ Dog 3</a>
-               </li>
             </ul>
-
             <button>Create new dog</button>
          </section>
       </div>
