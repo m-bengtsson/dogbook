@@ -1,20 +1,61 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
+
+/* Profilsida
+I det här fallet har användaren kommit till en hunds profilsida. Här ser
+användaren:
+● Bild
+● Edit länk
+● Namn
+● Smeknamn (påsidan)
+● Ålder
+● Kort beskrivning
+● Vänlista
+● Checkbox för närvaro
+● Länk tillbaka till startsidan
+Bilden påhunden kommer tas från ett API
+(https://dog.ceo/api/breeds/image/random) . Detta API kräver ingen
+nyckel och returnerar en godtycklig bild påen hund som tjänar våra
+syften att bara ha en statisk bild påen hund eftersom vi inte har några
+riktiga hundbilder. */
 
 export function Profile({dogs}){
-   console.log(dogs)
+
+   const [dogImg, setDogImg] = useState("")
 
    const nickname = useParams().nickname
+   const { name, age, bio, friends } = dogs.find(dog => dog.nickname === nickname)
 
-   const { name, age, bio } = dogs.find(dog => dog.nickname === nickname)
+     useEffect(() => {
+      async function fetchDog() {
+         const response = await fetch('https://dog.ceo/api/breeds/image/random')
+         const url = await response.json()
+         const randomDog = url.message;
+             setDogImg(randomDog)
+         console.log('Dogimage:', dogImg)
+         // setDog(data)
+      }
+      fetchDog()
+   }, []);
+
 
    return (
-      <div>
-         <p>Name: {name} <button> <Link to={'/edit'}>Edit</Link></button></p>
-         <p>Nickname: {nickname}</p>
-         <p>Age: {age}</p>
-         <p>Bio: {bio}</p>
+      <div className="profile">
+         
+         <img className="dog-image" src={dogImg} alt=""  />
+
+         <div className="info">
+            <p>Name: {name} <button> <Link to={'/edit'}>Edit</Link></button></p>
+            <p>Nickname: {nickname}</p>
+            <p>Age: {age}</p>
+            <p>Bio: {bio}</p>
+            <p>Friends: {friends}</p>
+         </div>
+         <div className="back-to-users">
+            <Link> back to users</Link>
+         </div>
       </div>
    )
 

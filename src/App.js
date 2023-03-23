@@ -45,7 +45,7 @@ function App() {
          <Header />
          <Routes>
             <Route path='/' element={<Home dogs={dogs} />} />
-            <Route path='/:nickname' element={<Profile dogs={dogs} />} />
+            <Route path='/:nickname' element={<Profile dogs={dogs} setDogs={setDogs} />} />
             <Route path='/create' element={<Create dogs={dogs} setDogs={setDogs} />} />
             <Route path='/edit' element={<Edit dogs={dogs} setDogs={setDogs} />} />
          </Routes>

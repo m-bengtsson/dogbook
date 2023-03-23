@@ -40,3 +40,15 @@ button {
 a {
   color: rgb(56, 157, 78);
 }
+
+.profile {
+  display: flex;
+  padding: 2em;
+  justify-content: space-between;
+  line-height: 50px;
+}
+
+.dog-image {
+  margin-right: 1em;
+  height: 200px;
+}
