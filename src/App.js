@@ -19,7 +19,8 @@ function App() {
          age: 7,
          bio: 'I like to run after my owner, and i like to bark',
          id: 1,
-         friends: 'Nala'
+         friends: ['Nala'],
+         present: true
       },
       {
          name: 'Nala',
@@ -27,7 +28,9 @@ function App() {
          age: 3,
          bio: 'I like to chew on my owners shoes',
          id: 2,
-         friends: ['Kossan', 'Pepsi']
+         friends: ['Kossan', 'Pepsi'],
+         present: true
+
       },
       {
          name: 'Kossan',
@@ -35,8 +38,8 @@ function App() {
          age: 3,
          bio: 'I like to sleep',
          id: 3,
-         friends: 'nala'
-
+         friends: ['Nala', 'Pepsi'],
+         present: false
       }
    ])
 
@@ -47,7 +50,7 @@ function App() {
             <Route path='/' element={<Home dogs={dogs} />} />
             <Route path='/:nickname' element={<Profile dogs={dogs} setDogs={setDogs} />} />
             <Route path='/create' element={<Create dogs={dogs} setDogs={setDogs} />} />
-            <Route path='/edit' element={<Edit dogs={dogs} setDogs={setDogs} />} />
+            <Route path='/:nickname/edit' element={<Edit dogs={dogs} setDogs={setDogs} />} />
          </Routes>
 
       </div>

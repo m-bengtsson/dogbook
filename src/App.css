@@ -47,8 +47,22 @@ a {
   justify-content: space-between;
   line-height: 50px;
 }
-
+.profile-info {
+  padding: 0 1em;
+}
 .dog-image {
   margin-right: 1em;
   height: 200px;
+}
+
+.back-to-users {
+  line-height: 30px;
+}
+
+.name-edit-present {
+  display: flex;
+  justify-content: space-between;
+}
+.dark-grey {
+  color: rgb(78, 78, 78);
 }

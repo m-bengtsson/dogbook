@@ -26,7 +26,8 @@ export function Profile({dogs}){
    const [dogImg, setDogImg] = useState("")
 
    const nickname = useParams().nickname
-   const { name, age, bio, friends } = dogs.find(dog => dog.nickname === nickname)
+   const { name, age, bio, friends, present } = dogs.find(dog => dog.nickname === nickname)
+   
 
      useEffect(() => {
       async function fetchDog() {
@@ -43,18 +44,25 @@ export function Profile({dogs}){
 
    return (
       <div className="profile">
-         
+
          <img className="dog-image" src={dogImg} alt=""  />
 
-         <div className="info">
-            <p>Name: {name} <button> <Link to={'/edit'}>Edit</Link></button></p>
+         <div className="profile-info">
+            <div className="name-edit-present">
+                  <p>Name: {name}</p>
+                  <Link to={`/${nickname}/edit`}>Edit</Link>
+                     <div> 
+                        {present ? <input type="checkbox" name="present" checked /> : <input type="checkbox" name="present" disabled />}
+                        <label htmlFor="present"> Present</label>
+                     </div>
+            </div>
             <p>Nickname: {nickname}</p>
             <p>Age: {age}</p>
             <p>Bio: {bio}</p>
             <p>Friends: {friends}</p>
          </div>
          <div className="back-to-users">
-            <Link> back to users</Link>
+            <Link to='/'> &lt; back to users</Link>
          </div>
       </div>
    )
