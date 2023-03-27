@@ -16,16 +16,13 @@ body {
   padding: 1em;
 }
 
-.main-content {
-  padding: 1em;
-}
-
-.main-content > h1 {
-  margin-bottom: 0.5em;
-}
 ul {
   list-style: none;
   margin-bottom: 1em;
+}
+
+a {
+  color: rgb(104, 148, 187);
 }
 
 button {
@@ -37,10 +34,19 @@ button {
   cursor: pointer;
 }
 
-a {
+.home-content > ul > a {
   color: rgb(56, 157, 78);
 }
 
+.dark-grey {
+  color: rgb(78, 78, 78);
+}
+
+.back-to-users {
+  line-height: 30px;
+}
+
+/* ----------------------- PROFILE ------------------------ */
 .profile {
   display: flex;
   padding: 2em;
@@ -55,14 +61,26 @@ a {
   height: 200px;
 }
 
-.back-to-users {
-  line-height: 30px;
-}
-
 .name-edit-present {
   display: flex;
   justify-content: space-between;
 }
-.dark-grey {
-  color: rgb(78, 78, 78);
+
+/* --------------------- HOME ---------------------- */
+.home-content {
+  padding: 1em;
+}
+
+.home-content > h1 {
+  margin-bottom: 0.5em;
+}
+
+.home-content > button > a {
+  color: rgb(255, 255, 255);
+}
+
+/* ---------------- CREATE --------------- */
+
+.create > form > * {
+  padding: 0.5em;
 }

@@ -20,6 +20,7 @@ function App() {
          bio: 'I like to run after my owner, and i like to bark',
          id: 1,
          friends: ['Nala'],
+         image: "https://images.dog.ceo/breeds/dhole/n02115913_1213.jpg",
          present: true
       },
       {
@@ -28,6 +29,7 @@ function App() {
          age: 3,
          bio: 'I like to chew on my owners shoes',
          id: 2,
+         image: 'https://images.dog.ceo/breeds/spaniel-sussex/n02102480_1849.jpg',
          friends: ['Kossan', 'Pepsi'],
          present: true
 
@@ -38,6 +40,7 @@ function App() {
          age: 3,
          bio: 'I like to sleep',
          id: 3,
+         image: "https://images.dog.ceo/breeds/keeshond/n02112350_8177.jpg",
          friends: ['Nala', 'Pepsi'],
          present: false
       }
