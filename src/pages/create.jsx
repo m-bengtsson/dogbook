@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 
 export function Create ({setDogs, dogs}) {
    
-/*    const [dogImg, setDogImg] = useState("")
- */
-   
+   //const [dogImg, setDogImg] = useState("")
 
    function submitHandler (event) {
-
+      event.preventDefault()
       const newDog = 
       {
          name: event.target.name.value,
@@ -17,17 +15,13 @@ export function Create ({setDogs, dogs}) {
          age: event.target.age.value,
          bio: event.target.bio.value,
          name: event.target.name.value,
-      }     
-
-      event.preventDefault()
+         friends: event.target.friends.value
+      } 
+          
       setDogs([...dogs, newDog])
-      
-      console.log('Input name: ', newDog)
-
-      
    }
 
-   console.log('All dogs: ',dogs)
+
 
 /*     useEffect(() => {
       async function fetchDog() {

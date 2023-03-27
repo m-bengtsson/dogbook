@@ -1,13 +1,25 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 
-
-export function Profile({dogs}){
+export function Profile({dogs, setDogs}){
 
    const nickname = useParams().nickname
    const { name, age, bio, friends, present, image } = dogs.find(dog => dog.nickname === nickname)
    
+   function handleChange (e) {
+      let isChecked = e.target.checked
+
+      setDogs(dogs.map(dog => {
+         if (dog.nickname === nickname){
+            console.log(dog)
+            return {...dog, present: isChecked}
+         }
+         else{
+            return dog
+         }}))
+   }
+
+
    return (
       <div className="profile">
 
@@ -18,7 +30,12 @@ export function Profile({dogs}){
                   <p>Name: {name}</p>
                   <Link to={`/${nickname}/edit`}>Edit</Link>
                      <div> 
-                        {present ? <input type="checkbox" name="present" checked /> : <input type="checkbox" name="present" disabled />}
+                        <input 
+                        type="checkbox" 
+                        name="present" 
+                        defaultChecked={present}
+                        onChange={handleChange}
+                        />
                         <label htmlFor="present"> Present</label>
                      </div>
             </div>

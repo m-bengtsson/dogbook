@@ -8,7 +8,6 @@ export function Edit ({dogs, setDogs}) {
    // List of friends 
    // Submithandler
    // removeFriendHandler
-   // present knapp??
    const nickname = useParams().nickname
    const { name, age, bio, friends, present } = dogs.find(dog => dog.nickname === nickname)
    
