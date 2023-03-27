@@ -4,20 +4,42 @@ import { useEffect, useState } from "react";
 
 export function Create ({setDogs, dogs}) {
    
-   const [dogImg, setDogImg] = useState("")
+/*    const [dogImg, setDogImg] = useState("")
+ */
+   
 
-    useEffect(() => {
+   function submitHandler (event) {
+
+      const newDog = 
+      {
+         name: event.target.name.value,
+         nickname: event.target.nickname.value,
+         age: event.target.age.value,
+         bio: event.target.bio.value,
+         name: event.target.name.value,
+      }     
+
+      event.preventDefault()
+      setDogs([...dogs, newDog])
+      
+      console.log('Input name: ', newDog)
+
+      
+   }
+
+   console.log('All dogs: ',dogs)
+
+/*     useEffect(() => {
       async function fetchDog() {
          const response = await fetch('https://dog.ceo/api/breeds/image/random')
          const url = await response.json()
          const randomDog = url.message;
              setDogImg(randomDog)
-
          console.log('Dogimage:', dogImg)
          // setDog(data)
       }
       fetchDog()
-   }, []);
+   }, []); */
 
    return(
       <div className="create">
@@ -25,7 +47,7 @@ export function Create ({setDogs, dogs}) {
          <div className="back-to-users">
             <Link to='/'> &lt; back to users</Link>
          </div>
-         <form>
+         <form onSubmit={submitHandler}>
             <div>
                <label htmlFor="name">Name</label>
                <input type="text" name="name"/>
@@ -43,13 +65,11 @@ export function Create ({setDogs, dogs}) {
                <input type="text" name="bio"/>
             </div>
             <div>
-               {/* Add button to add friends from the dropdown list */}
                <label htmlFor="friends">Friends</label>
                <select name="friends" id="friends">
                   {dogs.map(dog => <option value= '' key={dog.id}>{dog.name}</option>)}
                </select>            
             </div>
-
             <input type="submit" value='Save'/>
          </form>
       </div>
