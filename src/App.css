@@ -21,10 +21,6 @@ ul {
   margin-bottom: 1em;
 }
 
-a {
-  color: rgb(104, 148, 187);
-}
-
 button {
   background-color: rgb(205, 152, 232);
   color: white;
@@ -34,8 +30,12 @@ button {
   cursor: pointer;
 }
 
-.home-content > ul > a {
+.present > a {
   color: rgb(56, 157, 78);
+}
+
+.not-present > a {
+  color: rgb(181, 75, 75);
 }
 
 .dark-grey {
@@ -64,6 +64,10 @@ button {
 .name-edit-present {
   display: flex;
   justify-content: space-between;
+}
+
+.flex-row {
+  display: flex;
 }
 
 /* --------------------- HOME ---------------------- */

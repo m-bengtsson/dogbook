@@ -42,7 +42,7 @@ export function Profile({dogs, setDogs}){
             <p>Nickname: {nickname}</p>
             <p>Age: {age}</p>
             <p>Bio: {bio}</p>
-            <p>Friends: {friends}</p>
+            <div className="flex-row">Friends: <ul>{friends.map(friend => <li key={friend}>{friend}</li>)}</ul></div>
          </div>
          <div className="back-to-users">
             <Link to='/'> &lt; back to users</Link>
