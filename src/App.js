@@ -14,13 +14,13 @@ function App() {
 
    const savedDogs = localStorage.getItem('dogs')
 
-   console.log(savedDogs)
-
    const [dogs, setDogs] = useState(JSON.parse(savedDogs))
 
+   // Eveerytime we change dogs state
    useEffect(() => {
       localStorage.setItem('dogs', JSON.stringify(dogs))
    }, [dogs])
+
 
    useEffect(() => {
       const retrievedItem = window.localStorage.getItem('dogs');
@@ -34,7 +34,7 @@ function App() {
       <div>
          <Header />
          <Routes>
-            <Route path='/' element={<Home dogs={dogs} />} />
+            <Route path='/' element={<Home dogs={dogs} setDogs={setDogs} />} />
             <Route path='/:nickname' element={<Profile dogs={dogs} setDogs={setDogs} />} />
             <Route path='/create' element={<Create dogs={dogs} setDogs={setDogs} />} />
             <Route path='/:nickname/edit' element={<Edit dogs={dogs} setDogs={setDogs} />} />

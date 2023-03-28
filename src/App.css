@@ -79,6 +79,11 @@ button {
   color: rgb(255, 255, 255);
 }
 
+.remove-dog {
+  padding: 0.5px 5px;
+  margin: 0.8em;
+}
+
 /* ---------------- CREATE --------------- */
 
 .create > form > * {

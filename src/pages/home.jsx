@@ -1,15 +1,25 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { json, Link } from "react-router-dom"
 
 
-export function Home({dogs}) {
+export function Home({dogs, setDogs}) {
+   // red text if dog is absent
+
+   function handleDelete(deletedNickname){
+
+      console.log('deleted dog', deletedNickname)
+      const newDogs = dogs.filter(dog => dog.nickname !== deletedNickname)
+      console.log('new dogs: ', newDogs)
+      setDogs(newDogs) 
+   
+   }
 
    return (
       <div>
          <section className='home-content'>
             <h1>Users</h1>
             <ul>
-               {dogs.map(dog => <Link to={`/${dog.nickname}`} key={dog.id}><li >@{dog.name}</li> </Link>)}
+                  {dogs.map(dog => <li key={dog.id}><Link to={`/${dog.nickname}`}>@{dog.nickname}</Link> <button onClick={() => handleDelete(dog.nickname)} className="remove-dog">x</button></li> )}
             </ul>
             <button id="create"><Link to='/create'>Create new dog</Link></button>
          </section>
