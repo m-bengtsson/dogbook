@@ -49,5 +49,4 @@ export function Profile({dogs, setDogs}){
          </div>
       </div>
    )
-
 }

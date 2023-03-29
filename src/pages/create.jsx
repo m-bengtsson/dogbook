@@ -4,26 +4,39 @@ import { useEffect, useState } from "react";
 
 export function Create ({setDogs, dogs}) {
    
-   //const [dogImg, setDogImg] = useState("")
+   const [dogImg, setDogImg] = useState("")
+   const [friendList, setFriendList] = useState([])
+
 
    function submitHandler (event) {
       event.preventDefault()
+
+      const id = Math.floor(Math.random() * Math.floor(Math.random() * Date.now()))
+
+
       const newDog = 
       {
          name: event.target.name.value,
          nickname: event.target.nickname.value,
          age: event.target.age.value,
          bio: event.target.bio.value,
-         name: event.target.name.value,
-         friends: event.target.friends.value
+         friends: friendList,
+         image: dogImg,
+         id: id
       } 
-          
+
       setDogs([...dogs, newDog])
    }
 
+      function handleChange(event) {
 
+         const selected = event.target.value
+         setFriendList([... friendList, selected])
+         console.log('friendlist', friendList)
+         
+      }
 
-/*     useEffect(() => {
+     useEffect(() => {
       async function fetchDog() {
          const response = await fetch('https://dog.ceo/api/breeds/image/random')
          const url = await response.json()
@@ -33,7 +46,7 @@ export function Create ({setDogs, dogs}) {
          // setDog(data)
       }
       fetchDog()
-   }, []); */
+   }, []); 
 
    return(
       <div className="create">
@@ -60,9 +73,17 @@ export function Create ({setDogs, dogs}) {
             </div>
             <div>
                <label htmlFor="friends">Friends</label>
-               <select name="friends" id="friends">
-                  {dogs.map(dog => <option value= '' key={dog.id}>{dog.name}</option>)}
-               </select>            
+
+               <select onChange={handleChange} id="addFriend">
+                  <option value=""></option>
+                  {dogs.map( dog => <option key={dog.id}>{dog.name}</option>)}
+
+               </select>
+
+{/*                <select onChange={ e => handleChange} name="friends" id="friends">
+                  <option></option>
+                  {dogs.map(dog => <option value={dog.name} key={dog.nickname}>{dog.name}</option>)}
+               </select>    */}         
             </div>
             <input type="submit" value='Save'/>
          </form>

@@ -9,11 +9,9 @@ import { Routes, Route, Link, useParams, json } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 
-
 function App() {
 
    const savedDogs = localStorage.getItem('dogs')
-
    const [dogs, setDogs] = useState(JSON.parse(savedDogs))
 
    // Eveerytime we change dogs state
@@ -21,13 +19,11 @@ function App() {
       localStorage.setItem('dogs', JSON.stringify(dogs))
    }, [dogs])
 
-
    useEffect(() => {
       const retrievedItem = window.localStorage.getItem('dogs');
       if (retrievedItem !== null) setDogs(JSON.parse(retrievedItem));
 
    }, []);
-
 
 
    return (
