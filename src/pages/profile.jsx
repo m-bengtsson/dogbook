@@ -11,12 +11,19 @@ export function Profile({dogs, setDogs}){
 
       setDogs(dogs.map(dog => {
          if (dog.nickname === nickname){
-            console.log(dog)
             return {...dog, present: isChecked}
          }
          else{
             return dog
          }}))
+   }
+
+   function handleRemoveFriend(deletedFriend){
+      setDogs(dogs.map(dog => {
+         const friendsLeft = friends.filter(friend => friend !== deletedFriend)
+         console.log('friendslesft: ', friendsLeft)
+            return {...dog, friends: friendsLeft}
+      }))
    }
 
 
@@ -42,7 +49,12 @@ export function Profile({dogs, setDogs}){
             <p>Nickname: {nickname}</p>
             <p>Age: {age}</p>
             <p>Bio: {bio}</p>
-            <div className="flex-row">Friends: <ul>{friends.map(friend => <li key={friend}>{friend}</li>)}</ul></div>
+            <div className="flex-row">Friends: 
+               <ul>{friends.map(friend => 
+                  <li key={friend}>{friend}<button  
+                  onClick={() => handleRemoveFriend(friend)} >x</button></li>)
+               }</ul>
+            </div>
          </div>
          <div className="back-to-users">
             <Link to='/'> &lt; back to users</Link>
