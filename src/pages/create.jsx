@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
-
 export function Create ({setDogs, dogs}) {
    
    const [dogImg, setDogImg] = useState("")
@@ -31,10 +30,33 @@ export function Create ({setDogs, dogs}) {
       function handleChange(event) {
 
          const selected = event.target.value
-         setFriendList([... friendList, selected])
-         console.log('friendlist', friendList)
-         
+         // if selected === dog.name
+         // setFriendlist ... friendlist dog
+
+         setFriendList([... friendList, selected]) 
+/* 
+         setFriendList(friendList.filter(friend => friend !== selected))
+         console.log('friendlist: ', friendList) */
+/* 
+
+
+         console.log('already selected: ', alreadySelected)
+
+         if(alreadySelected === undefined){
+            return setFriendList([... friendList, selected]) 
+
+         } else{
+            setFriendList(friendList.map( friend => {
+   
+              if(alreadySelected !== undefined){
+               
+                  return friend
+               }
+            } ))
+            
+         } */
       }
+        
 
      useEffect(() => {
       async function fetchDog() {
@@ -43,10 +65,10 @@ export function Create ({setDogs, dogs}) {
          const randomDog = url.message;
              setDogImg(randomDog)
          console.log('Dogimage:', dogImg)
-         // setDog(data)
       }
       fetchDog()
    }, []); 
+
 
    return(
       <div className="create">
@@ -54,7 +76,7 @@ export function Create ({setDogs, dogs}) {
          <div className="back-to-users">
             <Link to='/'> &lt; back to users</Link>
          </div>
-         <form onSubmit={submitHandler}>
+         <form className="form" onSubmit={submitHandler}>
             <div>
                <label htmlFor="name">Name</label>
                <input type="text" name="name"/>
@@ -65,7 +87,7 @@ export function Create ({setDogs, dogs}) {
             </div>   
             <div>
                <label htmlFor="age">Age</label>
-               <input type="number" name="age"/>
+               <input type="number" name="age" min={0}/>
             </div>
             <div>
                <label htmlFor="bio">Bio</label>
@@ -75,15 +97,16 @@ export function Create ({setDogs, dogs}) {
                <label htmlFor="friends">Friends</label>
 
                <select onChange={handleChange} id="addFriend">
-                  <option value=""></option>
-                  {dogs.map( dog => <option key={dog.id}>{dog.name}</option>)}
-
-               </select>
-
-{/*                <select onChange={ e => handleChange} name="friends" id="friends">
                   <option></option>
-                  {dogs.map(dog => <option value={dog.name} key={dog.nickname}>{dog.name}</option>)}
-               </select>    */}         
+                  {dogs.map( dog => <option key={dog.id}>{dog.name}</option>)}
+               </select>
+               <div className="added-friends" >
+               <h4>Added friends:</h4>
+               <ul>
+                  {friendList.map( friend => <li key={friend}>{friend}</li>)}
+               </ul>
+               </div>
+     
             </div>
             <input type="submit" value='Save'/>
          </form>

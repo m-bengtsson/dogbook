@@ -1,10 +1,10 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { json, Link } from "react-router-dom"
 
 
 export function Home({dogs, setDogs}) {
 
-   // Returns className if dog is present or not present
+   // Returns className if dog is present or
    function isPresent(presentBoolean){
       if(presentBoolean){
          return 'present'
@@ -24,7 +24,9 @@ export function Home({dogs, setDogs}) {
          <section className='home-content'>
             <h1>Users</h1>
             <ul>
-                  {dogs.map(dog => <li className={isPresent(dog.present)} key={dog.nickname}><Link to={`/${dog.nickname}`}>@{dog.nickname}</Link> <button onClick={() => handleDelete(dog.nickname)} className="remove-dog">x</button></li> )}
+                  {dogs.map(dog => 
+                  <li className={isPresent(dog.present)} key={dog.nickname}><Link to={`/${dog.nickname}`}>@{dog.nickname}</Link> <button onClick={() => handleDelete(dog.nickname)} className="delete-button">x</button></li> 
+                  )}
             </ul>
             <button id="create"><Link to='/create'>Create new dog</Link></button>
          </section>

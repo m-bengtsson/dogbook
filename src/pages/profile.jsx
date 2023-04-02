@@ -18,20 +18,10 @@ export function Profile({dogs, setDogs}){
          }}))
    }
 
-   function handleRemoveFriend(deletedFriend){
-      setDogs(dogs.map(dog => {
-         const friendsLeft = friends.filter(friend => friend !== deletedFriend)
-         console.log('friendslesft: ', friendsLeft)
-            return {...dog, friends: friendsLeft}
-      }))
-   }
-
 
    return (
       <div className="profile">
-
          <img className="dog-image" src={image} alt=""  />
-
          <div className="profile-info">
             <div className="name-edit-present">
                   <p>Name: {name}</p>
@@ -51,8 +41,7 @@ export function Profile({dogs, setDogs}){
             <p>Bio: {bio}</p>
             <div className="flex-row">Friends: 
                <ul>{friends.map(friend => 
-                  <li key={friend}>{friend}<button  
-                  onClick={() => handleRemoveFriend(friend)} >x</button></li>)
+                  <li key={friend}>{friend}</li>)
                }</ul>
             </div>
          </div>

@@ -5,7 +5,7 @@ import { Profile } from './pages/profile';
 import { Edit } from './pages/edit'
 import { Create } from './pages/create'
 
-import { Routes, Route, Link, useParams, json } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 
@@ -14,7 +14,7 @@ function App() {
    const savedDogs = localStorage.getItem('dogs')
    const [dogs, setDogs] = useState(JSON.parse(savedDogs))
 
-   // Eveerytime we change dogs state
+   // Everytime we change dogs state
    useEffect(() => {
       localStorage.setItem('dogs', JSON.stringify(dogs))
    }, [dogs])
