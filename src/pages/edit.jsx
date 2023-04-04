@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import { Link, useParams } from "react-router-dom"
 
 export function Edit ({dogs, setDogs}) {
+   const [friendList, setFriendList] = useState([]) 
+
    const nickname = useParams().nickname;
    // const { name, age, bio, friends } = dogs.find(dog => dog.nickname === nickname)
   const dog = dogs.find(dog => dog.nickname === nickname);
@@ -12,6 +14,7 @@ export function Edit ({dogs, setDogs}) {
 
    function handleChange(event){
       const { name, nickname, age, bio, value } = event.target;
+      console.log()
       
       setEditedDog(
          {...editedDog, 
@@ -23,12 +26,19 @@ export function Edit ({dogs, setDogs}) {
    }
 
    function handleAddFriend(event){
-      const {friends, value} = event.target;
+      const selectedFriend = event.target.value;
+      console.log('event: ', event)
 
-      setEditedDog({...editedDog, [friends]: value})
+      const friends = event.target
+      console.log(friends)
 
-      console.log('selected', [friends], value)
-      console.log('editeddog.friends: ', editedDog.friends)
+      console.log(event.target.value)
+
+      setEditedDog({...editedDog, [friends]: selectedFriend })
+      console.log('friends editet: ', editedDog)
+
+/*       console.log('selected', [friends])
+      console.log('editeddog.friends: ', editedDog.friends) */
 
    }
 
@@ -109,8 +119,8 @@ export function Edit ({dogs, setDogs}) {
                   name="friends" 
                   id="friends" >
                   <option value="">--Add dog friend--</option>
-                  {editedDog.friends.map(friend => 
-                  <option key={friend} value={friend}> { friend } </option>)}
+                  {dogs.map(dog => 
+                  <option key={dog.id} value={dog.nickname}> {dog.nickname} </option>)}
                </select>            
             </div> 
             <input type="submit" value='Save'/>

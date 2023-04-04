@@ -79,7 +79,7 @@ textarea:focus {
 .home-content {
   padding: 3em;
   margin: 2em 5em;
-  background-color: rgb(251, 237, 221);
+  background-color: rgb(255, 243, 229);
   border-radius: 5px;
   box-shadow: rgb(83, 83, 83, 0.2) 2px 4px 1px;
 }

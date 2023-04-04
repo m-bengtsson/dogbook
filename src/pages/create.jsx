@@ -64,7 +64,6 @@ export function Create ({setDogs, dogs}) {
          const url = await response.json()
          const randomDog = url.message;
              setDogImg(randomDog)
-         console.log('Dogimage:', dogImg)
       }
       fetchDog()
    }, []); 
@@ -98,7 +97,7 @@ export function Create ({setDogs, dogs}) {
 
                <select onChange={handleChange} id="addFriend">
                   <option></option>
-                  {dogs.map( dog => <option key={dog.id}>{dog.name}</option>)}
+                  {dogs.map( dog => <option key={dog.id}>{dog.nickname}</option>)}
                </select>
                <div className="added-friends" >
                <h4>Added friends:</h4>

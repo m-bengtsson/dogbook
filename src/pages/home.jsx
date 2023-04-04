@@ -1,10 +1,10 @@
 import React from "react"
-import { json, Link } from "react-router-dom"
+import {Link } from "react-router-dom"
 
 
 export function Home({dogs, setDogs}) {
 
-   // Returns className if dog is present or
+   // Returns className if dog is present or not
    function isPresent(presentBoolean){
       if(presentBoolean){
          return 'present'
@@ -13,10 +13,22 @@ export function Home({dogs, setDogs}) {
       }
    }
 
+
    function handleDelete(deleted){
-      // set dogs to new dogs, updating localstorage from
-      const newDogs = dogs.filter(dog => dog.nickname !== deleted)
+
+      const newDogs = dogs
+      .filter(dog => dog.nickname !== deleted)
+
+      .map(dog => {
+         dog.friends = dog.friends.filter(friend => friend !== deleted)
+         return dog
+      })
+
+      console.log('newfriends: ', newDogs)
+
       setDogs(newDogs) 
+
+
    }
 
    return (
