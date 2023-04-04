@@ -2,19 +2,14 @@ import React, { useState } from "react"
 import { Link, useParams } from "react-router-dom"
 
 export function Edit ({dogs, setDogs}) {
-   const [friendList, setFriendList] = useState([]) 
-
    const nickname = useParams().nickname;
-   // const { name, age, bio, friends } = dogs.find(dog => dog.nickname === nickname)
-  const dog = dogs.find(dog => dog.nickname === nickname);
+   const dog = dogs.find(dog => dog.nickname === nickname);
 
    const [editedDog, setEditedDog] = useState(dog);
-   // Fix so you can only add the friends that are not already friends
-   // removeFriendHandler
+   const [friendList, setFriendList] = useState([]) 
 
    function handleChange(event){
       const { name, nickname, age, bio, value } = event.target;
-      console.log()
       
       setEditedDog(
          {...editedDog, 
@@ -26,29 +21,20 @@ export function Edit ({dogs, setDogs}) {
    }
 
    function handleAddFriend(event){
-      const selectedFriend = event.target.value;
-      console.log('event: ', event)
+      const selected = event.target.value;
 
-      const friends = event.target
-      console.log(friends)
-
-      console.log(event.target.value)
-
-      setEditedDog({...editedDog, [friends]: selectedFriend })
-      console.log('friends editet: ', editedDog)
-
-/*       console.log('selected', [friends])
-      console.log('editeddog.friends: ', editedDog.friends) */
-
+      if (!friendList.includes(selected)) {
+         setFriendList([...friendList, selected]);
+         setEditedDog({ ...editedDog, friends: [...friendList, selected] 
+         });
+      }
    }
 
     function handleRemoveFriend(deletedFriend){
+      const updatedList = friendList.filter((friend) => friend !== deletedFriend);
 
-       /* setEditedDog(dogs.map(dog => {
-         const friendsLeft = dog.friends.filter(friend => friend !== deletedFriend)
-         console.log('friendslesft: ', friendsLeft)
-            return {...dog, friends: friendsLeft}
-      }))  */
+      setFriendList(updatedList);
+      setEditedDog({ ...editedDog, friends: updatedList });
    }
 
 
@@ -61,6 +47,7 @@ export function Edit ({dogs, setDogs}) {
          }
       })) 
    };
+   console.log('dogs', dogs)
 
    return(
       <div className="edit">
@@ -107,8 +94,8 @@ export function Edit ({dogs, setDogs}) {
              <div>
                <label htmlFor="friends">Friends</label>
                <ul>
-                  {editedDog.friends.map(friend => 
-                  <li key={friend.id}>@{friend} 
+                  {editedDog.friends.map((friend, i) => 
+                  <li key={i}>@{friend} 
                   <button 
                      className="delete-button" 
                      onClick={() => handleRemoveFriend(friend)}>x</button>

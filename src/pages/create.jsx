@@ -33,7 +33,7 @@ export function Create ({setDogs, dogs}) {
          // if selected === dog.name
          // setFriendlist ... friendlist dog
 
-         setFriendList([... friendList, selected]) 
+         setFriendList([...friendList, selected]) 
 /* 
          setFriendList(friendList.filter(friend => friend !== selected))
          console.log('friendlist: ', friendList) */
