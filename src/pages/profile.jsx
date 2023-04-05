@@ -23,27 +23,30 @@ export function Profile({dogs, setDogs}){
       <div className="profile">
          <img className="dog-image" src={image} alt=""  />
          <div className="profile-info">
-            <div className="name-edit-present">
-                  <p>Name: {name}</p>
+            <div className="info-div flex-row">
+               Name: <p> {name}</p>
                   <Link to={`/${nickname}/edit`}>Edit</Link>
-                     <div> 
-                        <input 
-                        type="checkbox" 
-                        name="present" 
-                        defaultChecked={present}
-                        onChange={handleChange}
-                        />
-                        <label htmlFor="present"> Present</label>
-                     </div>
             </div>
-            <p>Nickname: {nickname}</p>
-            <p>Age: {age}</p>
-            <p>Bio: {bio}</p>
-            <div className="flex-row">Friends: 
-               <ul>{friends.map(friend => 
-                  <li key={friend}>{friend}</li>)
+            <div className="info-div flex-row">Nickname: <p> {nickname}</p></div>
+            <div className="info-div flex-row">Age:<p>{age}</p></div>
+            <div className="info-div flex-row">Bio:<p>{bio}</p></div>    
+
+            <div className="info-div flex-row">Friends: 
+               <ul className="friend-list">{friends.map(friend => 
+                  <li key={friend}><Link to={`/${friend}/`}>@{friend}</Link></li>)
                }</ul>
             </div>
+         </div>
+         <div> 
+             <input 
+                  type="checkbox" 
+                  name="present" 
+                  defaultChecked={present}
+                  onChange={handleChange}
+               />
+               <label 
+                  className="present-label"
+                  htmlFor="present"> Present</label>
          </div>
          <div className="back-to-users">
             <Link to='/'> &lt; back to users</Link>
@@ -51,3 +54,4 @@ export function Profile({dogs, setDogs}){
       </div>
    )
 }
+

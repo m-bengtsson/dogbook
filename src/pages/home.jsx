@@ -15,7 +15,6 @@ export function Home({dogs, setDogs}) {
 
 
    function handleDelete(deleted){
-
       const newDogs = dogs
       .filter(dog => dog.nickname !== deleted)
 
@@ -23,21 +22,19 @@ export function Home({dogs, setDogs}) {
          dog.friends = dog.friends.filter(friend => friend !== deleted)
          return dog
       })
-
-      console.log('newfriends: ', newDogs)
-
       setDogs(newDogs) 
-
-
    }
 
    return (
       <div>
          <section className='home-content'>
             <h1>Users</h1>
-            <ul>
+            <ul className="user-list">
                   {dogs.map(dog => 
-                  <li className={isPresent(dog.present)} key={dog.nickname}><Link to={`/${dog.nickname}`}>@{dog.nickname}</Link> <button onClick={() => handleDelete(dog.nickname)} className="delete-button">x</button></li> 
+                  <li className={isPresent(dog.present)} key={dog.nickname}>
+                     <Link to={`/${dog.nickname}`}>@{dog.nickname}</Link>
+                      <button onClick={() => handleDelete(dog.nickname)} className="delete-button">x</button>
+                      </li> 
                   )}
             </ul>
             <button id="create"><Link to='/create'>Create new dog</Link></button>

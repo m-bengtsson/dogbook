@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
+
 export function Create ({setDogs, dogs}) {
-   
    const [dogImg, setDogImg] = useState("")
    const [friendList, setFriendList] = useState([])
 
@@ -11,7 +11,6 @@ export function Create ({setDogs, dogs}) {
       event.preventDefault()
 
       const id = Math.floor(Math.random() * Math.floor(Math.random() * Date.now()))
-
 
       const newDog = 
       {
@@ -27,36 +26,15 @@ export function Create ({setDogs, dogs}) {
       setDogs([...dogs, newDog])
    }
 
-      function handleChange(event) {
+   function handleChange(event) {
+      const selected = event.target.value
+      setFriendList([...friendList, selected]) 
 
-         const selected = event.target.value
-         // if selected === dog.name
-         // setFriendlist ... friendlist dog
-
-         setFriendList([...friendList, selected]) 
-/* 
-         setFriendList(friendList.filter(friend => friend !== selected))
-         console.log('friendlist: ', friendList) */
-/* 
-
-
-         console.log('already selected: ', alreadySelected)
-
-         if(alreadySelected === undefined){
-            return setFriendList([... friendList, selected]) 
-
-         } else{
-            setFriendList(friendList.map( friend => {
-   
-              if(alreadySelected !== undefined){
-               
-                  return friend
-               }
-            } ))
-            
-         } */
-      }
-        
+   }
+    function handleRemoveFriend(removedFriend){
+      const updatedList = friendList.filter((friend) => friend !== removedFriend);
+      setFriendList(updatedList);
+   }
 
      useEffect(() => {
       async function fetchDog() {
@@ -94,19 +72,23 @@ export function Create ({setDogs, dogs}) {
             </div>
             <div>
                <label htmlFor="friends">Friends</label>
-
                <select onChange={handleChange} id="addFriend">
                   <option></option>
                   {dogs.map( dog => <option key={dog.id}>{dog.nickname}</option>)}
                </select>
-               <div className="added-friends" >
-               <h4>Added friends:</h4>
-               <ul>
-                  {friendList.map( friend => <li key={friend}>{friend}</li>)}
-               </ul>
-               </div>
      
             </div>
+               <div className="flex-row" >
+                  Added friends:
+                  <ul className="friend-list">
+                  {friendList.map((friend) => 
+                  <li key={friend}>@{friend} 
+                  <button 
+                     className="delete-button" 
+                     onClick={() => handleRemoveFriend(friend)}>x</button>
+                  </li>)}
+                  </ul>
+               </div>
             <input type="submit" value='Save'/>
          </form>
       </div>

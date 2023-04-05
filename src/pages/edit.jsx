@@ -21,17 +21,17 @@ export function Edit ({dogs, setDogs}) {
    }
 
    function handleAddFriend(event){
-      const selected = event.target.value;
+      const selectedFriend = event.target.value;
 
-      if (!friendList.includes(selected)) {
-         setFriendList([...friendList, selected]);
-         setEditedDog({ ...editedDog, friends: [...friendList, selected] 
+      if (!friendList.includes(selectedFriend)) {
+         setFriendList([...friendList, selectedFriend]);
+         setEditedDog({ ...editedDog, friends: [...friendList, selectedFriend] 
          });
       }
    }
 
-    function handleRemoveFriend(deletedFriend){
-      const updatedList = friendList.filter((friend) => friend !== deletedFriend);
+    function handleRemoveFriend(removedFriend){
+      const updatedList = friendList.filter((friend) => friend !== removedFriend);
 
       setFriendList(updatedList);
       setEditedDog({ ...editedDog, friends: updatedList });
@@ -47,7 +47,6 @@ export function Edit ({dogs, setDogs}) {
          }
       })) 
    };
-   console.log('dogs', dogs)
 
    return(
       <div className="edit">
@@ -110,12 +109,9 @@ export function Edit ({dogs, setDogs}) {
                   <option key={dog.id} value={dog.nickname}> {dog.nickname} </option>)}
                </select>            
             </div> 
-            <input type="submit" value='Save'/>
-            
+            <button className="save-changes" type="submit" value='Save changes'>Save changes</button>
          </form>
-
       </div>
-
    )
 }
 
