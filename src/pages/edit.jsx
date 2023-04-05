@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Link, useParams } from "react-router-dom"
 
 export function Edit ({dogs, setDogs}) {
-   const nickname = useParams().nickname;
+   const { nickname } = useParams()
    const dog = dogs.find(dog => dog.nickname === nickname);
 
    const [editedDog, setEditedDog] = useState(dog);
@@ -21,12 +21,12 @@ export function Edit ({dogs, setDogs}) {
    }
 
    function handleAddFriend(event){
+      event.preventDefault()
       const selectedFriend = event.target.value;
 
       if (!friendList.includes(selectedFriend)) {
-         setFriendList([...friendList, selectedFriend]);
-         setEditedDog({ ...editedDog, friends: [...friendList, selectedFriend] 
-         });
+         setFriendList(prevState => [...prevState, selectedFriend]);
+         setEditedDog(prevState => ({ ...prevState, friends: [...prevState.friends, selectedFriend] }));
       }
    }
 
