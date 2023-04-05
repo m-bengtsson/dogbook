@@ -50,7 +50,7 @@ export function Edit ({dogs, setDogs}) {
 
    return(
       <div className="edit">
-         <h1>Edit</h1>
+         <h2>Edit</h2>
          <div className="back-to-users">
             <Link to='/'> &lt; back to users</Link>
          </div>

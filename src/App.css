@@ -5,10 +5,10 @@
 }
 
 :root {
-  --main-bg-color: rgb(254, 220, 220);
-  --main-color: rgb(255, 120, 63);
+  --main-bg-color: rgb(252, 223, 223);
+  --main-color: rgb(254, 126, 62);
   --secondary-bg-color: rgb(255, 243, 229);
-  --links: rgb(106, 147, 181);
+  --links: rgb(153, 185, 200);
 }
 
 body {
@@ -22,6 +22,7 @@ body {
 
 .header {
   font-size: 1.5em;
+  letter-spacing: 3px;
   color: var(--main-color);
   padding: 2em;
   background: var(--main-bg-color);
@@ -127,6 +128,7 @@ textarea:focus {
 .profile a,
 .profile .friend-list > li > a {
   color: var(--links);
+  font-weight: normal;
 }
 .info-div,
 .present-label {
@@ -135,11 +137,15 @@ textarea:focus {
 .info-div > p {
   color: #646464;
   margin-left: 1em;
+  font-weight: normal;
 }
-
+.info-div {
+  font-weight: bold;
+}
 .info-div > a {
   color: var(--links);
   margin-left: 1em;
+  font-weight: normal;
 }
 .dog-image {
   margin-right: 1em;
@@ -162,12 +168,17 @@ textarea:focus {
   padding: 0.5em;
   margin: 1em;
 }
+.create > * {
+  color: var(--main-color);
+}
 label {
   margin-right: 1em;
+  font-weight: bold;
 }
 
 .added-friends {
   margin-top: 1em;
+  font-weight: bold;
 }
 
 .added-friends > * {
@@ -187,4 +198,8 @@ label {
 
 .friend-list > li > {
   color: var(--main-color);
+}
+
+.footer {
+  height: 200px;
 }

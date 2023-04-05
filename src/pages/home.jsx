@@ -28,7 +28,7 @@ export function Home({dogs, setDogs}) {
    return (
       <div>
          <section className='home-content'>
-            <h1>Users</h1>
+            <h2>Users</h2>
             <ul className="user-list">
                   {dogs.map(dog => 
                   <li className={isPresent(dog.present)} key={dog.nickname}>

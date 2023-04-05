@@ -49,7 +49,7 @@ export function Create ({setDogs, dogs}) {
 
    return(
       <div className="create">
-         <h1>Create</h1>
+         <h2>Create</h2>
          <div className="back-to-users">
             <Link to='/'> &lt; back to users</Link>
          </div>
@@ -78,7 +78,7 @@ export function Create ({setDogs, dogs}) {
                </select>
      
             </div>
-               <div className="flex-row" >
+               <div className="flex-row added-friends" >
                   Added friends:
                   <ul className="friend-list">
                   {friendList.map((friend) => 

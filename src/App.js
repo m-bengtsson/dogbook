@@ -1,9 +1,10 @@
 import './App.css';
-import { Header } from './components/header';
-import { Home } from './pages/home'
-import { Profile } from './pages/profile';
-import { Edit } from './pages/edit'
-import { Create } from './pages/create'
+import { Header } from './components/Header';
+import { Home } from './pages/Home'
+import { Profile } from './pages/Profile';
+import { Edit } from './pages/Edit'
+import { Create } from './pages/Create'
+import { Footer } from './components/Footer'
 
 import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -35,6 +36,7 @@ function App() {
             <Route path='/create' element={<Create dogs={dogs} setDogs={setDogs} />} />
             <Route path='/:nickname/edit' element={<Edit dogs={dogs} setDogs={setDogs} />} />
          </Routes>
+         <Footer />
 
       </div>
    );
