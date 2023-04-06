@@ -1,6 +1,6 @@
 # Dogbook React App - a social network for dogs
 
-This project is a Single Page Application (SPA) built using React, where you can manage information about dogs. The application serves as an admin tool for daycare staff enabling them to track which dogs are currently enrolled in the daycare as well as which of them hav established friendships with one another. The platform allows users to create profiles for each dog and uses local storage to persist data.
+This project is a Single Page Application (SPA) built using React, where you can manage information about dogs. The application serves as an admin tool for daycare staff enabling them to track which dogs are currently enrolled in the daycare as well as which of them have established friendships with one another. The platform allows users to create profiles for each dog and uses local storage to persist data.
 
 ## Getting started
 

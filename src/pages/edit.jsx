@@ -6,7 +6,7 @@ export function Edit ({dogs, setDogs}) {
    const dog = dogs.find(dog => dog.nickname === nickname);
 
    const [editedDog, setEditedDog] = useState(dog);
-   const [friendList, setFriendList] = useState([]) 
+   const [friendList, setFriendList] = useState(dog.friends) 
 
    function handleChange(event){
       const { name, nickname, age, bio, value } = event.target;
@@ -34,7 +34,10 @@ export function Edit ({dogs, setDogs}) {
       const updatedList = friendList.filter((friend) => friend !== removedFriend);
 
       setFriendList(updatedList);
+     /*  setEditedDog(prevState => ({ ...prevState, friends: updatedList })); */
       setEditedDog({ ...editedDog, friends: updatedList });
+      console.log('updatedlist2: ', updatedList)
+      
    }
 
 

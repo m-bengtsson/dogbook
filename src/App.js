@@ -4,7 +4,6 @@ import { Home } from './pages/Home'
 import { Profile } from './pages/Profile';
 import { Edit } from './pages/Edit'
 import { Create } from './pages/Create'
-import { Footer } from './components/Footer'
 
 import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -37,8 +36,6 @@ function App() {
             <Route path='/create' element={<Create dogs={dogs} setDogs={setDogs} />} />
             <Route path='/:nickname/edit' element={<Edit dogs={dogs} setDogs={setDogs} />} />
          </Routes>
-         <Footer />
-
       </div>
    );
 }
