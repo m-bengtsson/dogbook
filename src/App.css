@@ -6,9 +6,10 @@
 
 :root {
   --main-bg-color: rgb(252, 224, 223);
-  --main-color: rgb(255, 115, 45);
+  --main-color: rgb(250, 112, 43);
   --secondary-bg-color: rgb(255, 243, 229);
   --links: rgb(153, 185, 200);
+  --dark-grey: rgb(78, 78, 78);
 }
 
 #root {
@@ -23,7 +24,6 @@
 body {
   display: flex;
   flex-direction: column;
-  color: rgb(98, 97, 97);
   background: var(--main-bg-color);
   font-family: Georgia, "Times New Roman", Times, serif;
   align-items: center;
@@ -121,7 +121,7 @@ textarea:focus {
 }
 
 .home-content > button > a {
-  color: rgb(75, 75, 75);
+  color: var(--dark-grey);
 }
 
 /* ----------------------- PROFILE ------------------------ */
@@ -189,14 +189,19 @@ label {
 }
 
 .added-friends {
-  margin-top: 1em;
   font-weight: bold;
 }
-
-.added-friends > * {
-  padding: 0.5em 0em;
+.added-friend-list {
+  font-weight: normal;
+  margin: 0;
 }
 
+input.save-created-dog {
+  background-color: var(--links);
+  color: rgb(91, 91, 91);
+  padding: 0.8em 1.5em;
+  cursor: pointer;
+}
 /* -------------- EDIT ---------------- */
 
 .edit {

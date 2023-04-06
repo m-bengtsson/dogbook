@@ -22,7 +22,7 @@ export function Home({dogs, setDogs}) {
             <ul className="user-list">
                {dogs.map(dog => 
                // Returns classname based on wether the dog is present or not
-                  <li className={dog.present ? 'present' : 'not-present'} key={dog.nickname}>
+                  <li className={dog.present ? 'present' : 'not-present'} key={dog.id}>
                      {/* Link to the dog's profile */}
                      <Link to={`/${dog.nickname}`}>@{dog.nickname}</Link>
                       <button onClick={() => handleDelete(dog.nickname)} className="delete-button">x</button>

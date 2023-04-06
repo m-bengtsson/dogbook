@@ -2,15 +2,18 @@ import React, { useState } from "react"
 import { Link, useParams } from "react-router-dom"
 
 export function Edit ({dogs, setDogs}) {
+   // Get nickname parameter from URL and finding dog object in array with matching nickname
    const { nickname } = useParams()
-   const dog = dogs.find(dog => dog.nickname === nickname);
+   const dogToEdit = dogs.find(dog => dog.nickname === nickname);
 
-   const [editedDog, setEditedDog] = useState(dog);
-   const [friendList, setFriendList] = useState(dog.friends) 
+   // Set up state for the edited dog and the list of friends
+   const [editedDog, setEditedDog] = useState(dogToEdit);
+   const [friendList, setFriendList] = useState(dogToEdit.friends) 
 
+   // Handle changes in the form inputs
    function handleChange(event){
       const { name, nickname, age, bio, value } = event.target;
-      
+      // Update the editedDog state object with the new value for the input field
       setEditedDog(
          {...editedDog, 
             [name]: value, 
@@ -20,11 +23,13 @@ export function Edit ({dogs, setDogs}) {
          });
    }
 
+   // Handle adding a friend to the friendList array
    function handleAddFriend(event){
       event.preventDefault()
       const selectedFriend = event.target.value;
 
       if (!friendList.includes(selectedFriend)) {
+         // Add the selected friend to the friendList array and update the editedDog state object
          setFriendList(prevState => [...prevState, selectedFriend]);
          setEditedDog(prevState => ({ ...prevState, friends: [...prevState.friends, selectedFriend] }));
       }
@@ -34,14 +39,13 @@ export function Edit ({dogs, setDogs}) {
       const updatedList = friendList.filter((friend) => friend !== removedFriend);
 
       setFriendList(updatedList);
-     /*  setEditedDog(prevState => ({ ...prevState, friends: updatedList })); */
       setEditedDog({ ...editedDog, friends: updatedList });
       console.log('updatedlist2: ', updatedList)
       
    }
 
-
-   function submitHandler () {
+   // Handle form submission
+   function handleEditSubmit () {
       setDogs(dogs.map(dog => {
          if(dog.nickname === nickname){
             return editedDog
@@ -57,7 +61,7 @@ export function Edit ({dogs, setDogs}) {
          <div className="back-to-users">
             <Link to='/'> &lt; back to users</Link>
          </div>
-         <form onSubmit={submitHandler}>
+         <form onSubmit={handleEditSubmit}>
             <div className="edit-divs">
                <label htmlFor="name">Name</label>
                <input 

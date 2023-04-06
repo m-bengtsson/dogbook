@@ -3,15 +3,13 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 
 export function Create ({setDogs, dogs}) {
-   const [dogImg, setDogImg] = useState("")
+   const [dogImgUrl, setDogImgUrl] = useState("")
    const [friendList, setFriendList] = useState([])
 
-
-   function submitHandler (event) {
+   function handleFormSubmit (event) {
       event.preventDefault()
-
       const id = Math.floor(Math.random() * Math.floor(Math.random() * Date.now()))
-
+      // Create a new dog object with the form data and the generated ID
       const newDog = 
       {
          name: event.target.name.value,
@@ -19,41 +17,40 @@ export function Create ({setDogs, dogs}) {
          age: event.target.age.value,
          bio: event.target.bio.value,
          friends: friendList,
-         image: dogImg,
+         image: dogImgUrl,
          id: id
       } 
-
       setDogs([...dogs, newDog])
    }
 
-   function handleChange(event) {
+   function handleFriendSelection(event) {
       const selected = event.target.value
       setFriendList([...friendList, selected]) 
-
-   }
-    function handleRemoveFriend(removedFriend){
-      const updatedList = friendList.filter((friend) => friend !== removedFriend);
-      setFriendList(updatedList);
    }
 
+    function handleFriendRemoval(removedFriend){
+      const remainingFriends = friendList.filter((friend) => friend !== removedFriend);
+      setFriendList(remainingFriends);
+   }
+   // Use the useEffect hook to fetch a random dog image from the Dog API and set the dogImgUrl state with the URL
      useEffect(() => {
       async function fetchDog() {
          const response = await fetch('https://dog.ceo/api/breeds/image/random')
          const url = await response.json()
          const randomDog = url.message;
-             setDogImg(randomDog)
+             setDogImgUrl(randomDog)
       }
       fetchDog()
    }, []); 
 
-
+   // Render create component
    return(
       <div className="create">
          <h2>Create</h2>
          <div className="back-to-users">
             <Link to='/'> &lt; back to users</Link>
          </div>
-         <form className="form" onSubmit={submitHandler}>
+         <form className="form" onSubmit={handleFormSubmit}>
             <div>
                <label htmlFor="name">Name</label>
                <input type="text" name="name"/>
@@ -72,7 +69,7 @@ export function Create ({setDogs, dogs}) {
             </div>
             <div>
                <label htmlFor="friends">Friends</label>
-               <select onChange={handleChange} id="addFriend">
+               <select onChange={handleFriendSelection} id="addFriend">
                   <option></option>
                   {dogs.map( dog => <option key={dog.id}>{dog.nickname}</option>)}
                </select>
@@ -80,19 +77,18 @@ export function Create ({setDogs, dogs}) {
             </div>
                <div className="flex-row added-friends" >
                   Added friends:
-                  <ul className="friend-list">
+                  <ul className="added-friend-list">
                   {friendList.map((friend) => 
                   <li key={friend}>@{friend} 
                   <button 
                      className="delete-button" 
-                     onClick={() => handleRemoveFriend(friend)}>x</button>
+                     onClick={() => handleFriendRemoval(friend)}>x</button>
                   </li>)}
                   </ul>
                </div>
-            <input type="submit" value='Save'/>
+            <Link to={'/'}><input className="save-created-dog" type="submit" value='Save'/></Link>
          </form>
       </div>
-
    )
 }
 
