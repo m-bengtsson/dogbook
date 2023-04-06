@@ -16,8 +16,7 @@ export function Home({dogs, setDogs}) {
    }
 
    return (
-      <div>
-         <section className='home-content'>
+      <div className="home-content">
             <h2>Users</h2>
              {/* Render the list of dogs */}
             <ul className="user-list">
@@ -31,7 +30,6 @@ export function Home({dogs, setDogs}) {
                )}
             </ul>
             <button id="create"><Link to='/create'>Create new dog</Link></button>
-         </section>
       </div>
    )
 }

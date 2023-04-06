@@ -28,7 +28,7 @@ function App() {
 
    // Render the header, routes and footer components
    return (
-      <div>
+      <div className='app'>
          <Header />
          <Routes>
             <Route path='/' element={<Home dogs={dogs} setDogs={setDogs} />} />
