@@ -18,13 +18,12 @@ export function Profile({dogs, setDogs}){
          }}))
    }
 
-
    return (
       <div className="profile">
          <img className="dog-image" src={image} alt=""  />
          <div className="profile-info">
             <div className="info-div flex-row">
-               Name: <p> {name}</p>
+               Name: <p>{name}</p>
                   <Link to={`/${nickname}/edit`}>Edit</Link>
             </div>
             <div className="info-div flex-row">

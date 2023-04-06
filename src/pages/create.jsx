@@ -22,7 +22,7 @@ export function Create ({setDogs, dogs}) {
       } 
       setDogs([...dogs, newDog])
    }
-
+   // Handle friend selection to friendlist
    function handleFriendSelection(event) {
       const selected = event.target.value
       setFriendList([...friendList, selected]) 
@@ -43,7 +43,6 @@ export function Create ({setDogs, dogs}) {
       fetchDog()
    }, []); 
 
-   // Render create component
    return(
       <div className="create">
          <h2>Create</h2>

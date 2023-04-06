@@ -7,7 +7,7 @@ export function Home({dogs, setDogs}) {
    function handleDelete(deleted){
       const newDogs = dogs
       .filter(dog => dog.nickname !== deleted)
-
+      // Deletes from dogs friendslists
       .map(dog => {
          dog.friends = dog.friends.filter(friend => friend !== deleted)
          return dog
@@ -18,12 +18,10 @@ export function Home({dogs, setDogs}) {
    return (
       <div className="home-content">
             <h2>Users</h2>
-             {/* Render the list of dogs */}
             <ul className="user-list">
                {dogs.map(dog => 
                // Returns classname based on wether the dog is present or not
                   <li className={dog.present ? 'present' : 'not-present'} key={dog.id}>
-                     {/* Link to the dog's profile */}
                      <Link to={`/${dog.nickname}`}>@{dog.nickname}</Link>
                       <button onClick={() => handleDelete(dog.nickname)} className="delete-button">x</button>
                   </li> 

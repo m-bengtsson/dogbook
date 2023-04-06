@@ -26,7 +26,7 @@ function App() {
 
    }, []);
 
-   // Render the header, routes and footer components
+   // Render the header and routes components
    return (
       <div className='app'>
          <Header />
