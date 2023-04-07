@@ -1,13 +1,15 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
 
 export function Create ({setDogs, dogs}) {
    const [dogImgUrl, setDogImgUrl] = useState("")
    const [friendList, setFriendList] = useState([])
+   const navigate = useNavigate();
 
    function handleFormSubmit (event) {
       event.preventDefault()
+
       const id = Math.floor(Math.random() * Math.floor(Math.random() * Date.now()))
       // Create a new dog object with the form data and the generated ID
       const newDog = 
@@ -18,20 +20,21 @@ export function Create ({setDogs, dogs}) {
          bio: event.target.bio.value,
          friends: friendList,
          image: dogImgUrl,
-         id: id
+         id: String(id)
       } 
       setDogs([...dogs, newDog])
+
+      navigate('/');
    }
    // Handle friend selection to friendlist
    function handleFriendSelection(event) {
       const selected = event.target.value
-/*       if(selected === undefined){
+      if(selected === undefined){
          setFriendList([...friendList, []]) 
-      }else{ */
+      }else{
          setFriendList([...friendList, selected]) 
-      //}
+      }
    }
-
 
     function handleFriendRemoval(removedFriend){
       const remainingFriends = friendList.filter((friend) => friend !== removedFriend);

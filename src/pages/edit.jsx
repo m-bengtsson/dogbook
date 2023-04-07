@@ -1,16 +1,15 @@
 import React, { useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
 
 export function Edit ({dogs, setDogs}) {
+   const navigate = useNavigate();
    // Get id parameter from URL and finding dog object in array with matching 
-   const { id } = useParams()
+   const { id } = useParams();
    const dogToEdit = dogs.find(dog => dog.id === id);
 
    // Set up state for the edited dog and the list of friends
    const [editedDog, setEditedDog] = useState(dogToEdit);
-   const [friendList, setFriendList] = useState(dogToEdit.friends) 
-   
-   console.log('dog to edit. friends: ', dogToEdit.friends)
+   const [friendList, setFriendList] = useState(dogToEdit?.friends) 
 
    // Handle changes in the form inputs
    function handleChange(event){
@@ -37,26 +36,26 @@ export function Edit ({dogs, setDogs}) {
       }
    }
 
-    function handleRemoveFriend(removedFriend){
+    function handleRemoveFriend(event, removedFriend){
+      event.preventDefault()
       const updatedList = friendList.filter((friend) => friend !== removedFriend);
 
       setFriendList(updatedList);
-      setEditedDog({ ...editedDog, friends: updatedList });
-      console.log('updatedlist2: ', updatedList)
-      
+      setEditedDog({ ...editedDog, friends: updatedList });      
    }
 
    // Handle form submission
-   function handleEditSubmit () {
-   
+   function handleEditSubmit (event) {
+      event.preventDefault()
+
       setDogs(dogs.map(dog => {
-         console.log('dog.id: ', dog.id)
          if(dog.id === id){
             return editedDog
          } else {
             return dog;
          }
       })) 
+      navigate('/');
    };
 
    return(
@@ -108,17 +107,17 @@ export function Edit ({dogs, setDogs}) {
                   <li key={i}>@{friend} 
                   <button 
                      className="delete-button" 
-                     onClick={() => handleRemoveFriend(friend)}>x</button>
+                     onClick={(event) => handleRemoveFriend(event, friend)}>x</button>
                   </li>)}
                </ul>
                <select
-               className="select-friend"
-               onChange={handleAddFriend} 
+                  className="select-friend"
+                  onChange={handleAddFriend} 
                   name="friends" 
                   id="friends" >
                   <option value="">--Add dog friend--</option>
                   {dogs.map(dog => 
-                  <option key={dog.id} value={dog.nickname}> {dog.nickname} </option>)}
+                     <option key={dog.id} value={dog.nickname}>{dog.nickname} </option>)}
                </select>            
             </div> 
             <button className="save-changes" type="submit" value='Save changes'>Save changes</button>
