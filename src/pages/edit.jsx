@@ -92,7 +92,7 @@ export function Edit ({dogs, setDogs}) {
                   name="age" 
                   defaultValue={editedDog.age}/>
             </div> 
-             <div>
+             <div className="edit-divs">
                <label htmlFor="bio">Bio</label>
                <textarea 
                   onChange={handleChange} 
@@ -100,7 +100,7 @@ export function Edit ({dogs, setDogs}) {
                   name="bio" 
                   value={editedDog.bio}/>
             </div>
-             <div>
+             <div className="friend-selection-div">
                <label htmlFor="friends">Friends</label>
                <ul>
                   {editedDog.friends.map((friend, i) => 

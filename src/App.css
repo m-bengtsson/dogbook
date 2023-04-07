@@ -237,6 +237,11 @@ textarea {
   margin-left: 0;
   color: var(--main-color);
 }
+
+.friend-selection-div {
+  display: flex;
+  flex-direction: column;
+}
 .select-friend {
   width: 200px;
   margin: 0;

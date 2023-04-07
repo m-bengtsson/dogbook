@@ -20,7 +20,7 @@ export function Create ({setDogs, dogs}) {
          bio: event.target.bio.value,
          friends: friendList,
          image: dogImgUrl,
-         id: String(id)
+         id: String(id)  //id made to string since the url parameter will be a string)
       } 
       setDogs([...dogs, newDog])
 
