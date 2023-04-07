@@ -2,6 +2,7 @@ import React from "react"
 import {Link } from "react-router-dom"
 
 
+
 export function Home({dogs, setDogs}) {
    // A function to handle deleting a dog from the list
    function handleDelete(deleted){
@@ -22,8 +23,8 @@ export function Home({dogs, setDogs}) {
                {dogs.map(dog => 
                // Returns classname based on wether the dog is present or not
                   <li className={dog.present ? 'present' : 'not-present'} key={dog.id}>
-                     <Link to={`/${dog.nickname}`}>@{dog.nickname}</Link>
-                      <button onClick={() => handleDelete(dog.nickname)} className="delete-button">x</button>
+                     <Link to={`/${dog.id}`}>@{dog.nickname}</Link>
+                      <button onClick={() => handleDelete(dog.id)} className="delete-button">x</button>
                   </li> 
                )}
             </ul>

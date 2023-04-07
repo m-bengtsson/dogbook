@@ -2,13 +2,15 @@ import React, { useState } from "react"
 import { Link, useParams } from "react-router-dom"
 
 export function Edit ({dogs, setDogs}) {
-   // Get nickname parameter from URL and finding dog object in array with matching nickname
-   const { nickname } = useParams()
-   const dogToEdit = dogs.find(dog => dog.nickname === nickname);
+   // Get id parameter from URL and finding dog object in array with matching 
+   const { id } = useParams()
+   const dogToEdit = dogs.find(dog => dog.id === id);
 
    // Set up state for the edited dog and the list of friends
    const [editedDog, setEditedDog] = useState(dogToEdit);
    const [friendList, setFriendList] = useState(dogToEdit.friends) 
+   
+   console.log('dog to edit. friends: ', dogToEdit.friends)
 
    // Handle changes in the form inputs
    function handleChange(event){
@@ -46,8 +48,10 @@ export function Edit ({dogs, setDogs}) {
 
    // Handle form submission
    function handleEditSubmit () {
+   
       setDogs(dogs.map(dog => {
-         if(dog.nickname === nickname){
+         console.log('dog.id: ', dog.id)
+         if(dog.id === id){
             return editedDog
          } else {
             return dog;
@@ -108,6 +112,7 @@ export function Edit ({dogs, setDogs}) {
                   </li>)}
                </ul>
                <select
+               className="select-friend"
                onChange={handleAddFriend} 
                   name="friends" 
                   id="friends" >

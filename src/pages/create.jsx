@@ -25,8 +25,13 @@ export function Create ({setDogs, dogs}) {
    // Handle friend selection to friendlist
    function handleFriendSelection(event) {
       const selected = event.target.value
-      setFriendList([...friendList, selected]) 
+/*       if(selected === undefined){
+         setFriendList([...friendList, []]) 
+      }else{ */
+         setFriendList([...friendList, selected]) 
+      //}
    }
+
 
     function handleFriendRemoval(removedFriend){
       const remainingFriends = friendList.filter((friend) => friend !== removedFriend);
@@ -42,6 +47,7 @@ export function Create ({setDogs, dogs}) {
       }
       fetchDog()
    }, []); 
+
 
    return(
       <div className="create">
@@ -69,7 +75,7 @@ export function Create ({setDogs, dogs}) {
             <div>
                <label htmlFor="friends">Friends</label>
                <select onChange={handleFriendSelection} id="addFriend">
-                  <option></option>
+                  <option>--Add</option>
                   {dogs.map( dog => <option key={dog.id}>{dog.nickname}</option>)}
                </select>
      
@@ -85,7 +91,7 @@ export function Create ({setDogs, dogs}) {
                   </li>)}
                   </ul>
                </div>
-            <Link to={'/'}><input className="save-created-dog" type="submit" value='Save'/></Link>
+            <input className="save-created-dog" type="submit" value='Save'/>
          </form>
       </div>
    )

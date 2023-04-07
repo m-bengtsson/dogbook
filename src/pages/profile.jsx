@@ -3,28 +3,34 @@ import { Link, useParams } from "react-router-dom";
 
 export function Profile({dogs, setDogs}){
    // Finding dog based on the url parameter
-   const { nickname } = useParams()
-   const { name, age, bio, friends, present, image } = dogs.find(dog => dog.nickname === nickname)
+   const {id} = useParams()
+   //const currentDog = dogs.find(dog => dog.id === Number(id))
+ 
+
+   const { name, nickname, age, bio, friends, present, image } = dogs.find(dog => dog.id === Number(id))
+
+   
    
    // Handles changes setting dog to present or not present
    function handlePresentChange (e) {
       let isChecked = e.target.checked
       setDogs(dogs.map(dog => {
-         if (dog.nickname === nickname){
+         if (dog.id === id){
             return {...dog, present: isChecked}
          }
          else{
             return dog
          }}))
    }
+   
 
    return (
       <div className="profile">
          <img className="dog-image" src={image} alt=""  />
          <div className="profile-info">
             <div className="info-div flex-row">
-               Name: <p>{name}</p>
-                  <Link to={`/${nickname}/edit`}>Edit</Link>
+               Name: <p> {name}</p>
+                  <Link to={`/${id}/edit`}>Edit</Link>
             </div>
             <div className="info-div flex-row">
                Nickname: <p> {nickname}</p>
@@ -37,9 +43,17 @@ export function Profile({dogs, setDogs}){
             </div>    
             <div className="info-div flex-row">
                Friends: 
-               <ul className="friend-list">{friends.map(friend => 
-                  <li key={friend}><Link to={`/${friend}/`}>@{friend}</Link></li>)
-               }</ul>
+               {!friends.length ? (
+               <p>no friends yet!</p>
+               ) : (
+                  <ul className="friend-list">
+                     {friends.map(friend => (
+                        <li key={friend}>
+                           <Link to={`/${friend}/`}>@{friend}</Link>
+                        </li>
+                     ))}
+                  </ul>
+                  )}
             </div>
          </div>
          <div> 

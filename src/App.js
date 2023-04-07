@@ -8,7 +8,6 @@ import { Create } from './pages/Create'
 import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-
 function App() {
    // Get saved dogs from local storage
    const savedDogs = localStorage.getItem('dogs')
@@ -32,9 +31,9 @@ function App() {
          <Header />
          <Routes>
             <Route path='/' element={<Home dogs={dogs} setDogs={setDogs} />} />
-            <Route path='/:nickname' element={<Profile dogs={dogs} setDogs={setDogs} />} />
+            <Route path='/:id' element={<Profile dogs={dogs} setDogs={setDogs} />} />
             <Route path='/create' element={<Create dogs={dogs} setDogs={setDogs} />} />
-            <Route path='/:nickname/edit' element={<Edit dogs={dogs} setDogs={setDogs} />} />
+            <Route path='/:id/edit' element={<Edit dogs={dogs} setDogs={setDogs} />} />
          </Routes>
       </div>
    );
