@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 
-export function Profile({ dogs, setDogs }){
+export default function Profile({ dogs, setDogs }){
    // Finding dog based on the url parameter
    const { id } = useParams() 
    const { name, nickname, age, bio, friends, present, image } = dogs.find(dog => dog.id === id)

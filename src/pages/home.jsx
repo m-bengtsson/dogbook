@@ -2,8 +2,7 @@ import React from "react"
 import {Link } from "react-router-dom"
 
 
-
-export function Home({dogs, setDogs}) {
+export default function Home({dogs, setDogs}) {
    // A function to handle deleting a dog from the list
    function handleDelete(deleted){
       const newDogs = dogs
@@ -15,7 +14,6 @@ export function Home({dogs, setDogs}) {
       })
       setDogs(newDogs) 
    }
-   
 
    return (
       <div className="home-content">

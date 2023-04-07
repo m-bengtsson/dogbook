@@ -1,9 +1,9 @@
 import './App.css';
-import { Header } from './components/Header';
-import { Home } from './pages/Home'
-import { Profile } from './pages/Profile';
-import { Edit } from './pages/Edit'
-import { Create } from './pages/Create'
+import Header from './components/Header';
+import Home from './pages/Home'
+import Profile from './pages/Profile';
+import Edit from './pages/Edit'
+import Create from './pages/Create'
 
 import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';

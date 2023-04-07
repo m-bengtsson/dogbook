@@ -2,7 +2,7 @@ import React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
 
-export function Create ({setDogs, dogs}) {
+export default function Create ({setDogs, dogs}) {
    const [dogImgUrl, setDogImgUrl] = useState("")
    const [friendList, setFriendList] = useState([])
    const navigate = useNavigate();
@@ -20,7 +20,7 @@ export function Create ({setDogs, dogs}) {
          bio: event.target.bio.value,
          friends: friendList,
          image: dogImgUrl,
-         id: String(id)  //id made to string since the url parameter will be a string)
+         id: String(id)  //id made to string since the url parameter will be a string
       } 
       setDogs([...dogs, newDog])
 

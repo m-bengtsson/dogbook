@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link, useParams, useNavigate } from "react-router-dom"
 
-export function Edit ({dogs, setDogs}) {
+export default function Edit ({dogs, setDogs}) {
    const navigate = useNavigate();
    // Get id parameter from URL and finding dog object in array with matching 
    const { id } = useParams();
